@@ -13,6 +13,7 @@
         gtag('config', 'G-G7LQD3LTH1');
     </script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <!-- <meta charset="utf-8">
     <title>Evaluation</title>
     <base href="/">
@@ -20,23 +21,22 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">-->
 </head>
 <body>
-
-<div id="myModal" class="modal">
+<div id="myModal" class="visible-modal">
 
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="main-text"><p>Give us a way to send you a ticket</p></div>
-        <div class="input-layout">
+
+        <p>Give us a way to send you a ticket</p>
         <form class="text-center">
             <div class="form-group">
-                <label class="form-label">
-                    Phone number:
-                    <input type="text" name="phone number"
-                           class="form-control"
-                           autofocus>
-                </label>
-
+                <div>
+                    <label class="form-label">
+                        Phone number:
+                        <input type="text" name="phone number"
+                               class="form-control"
+                               autofocus>
+                    </label>
+                </div>
                 <br>
                 <label class="form-label">
                     email:
@@ -47,58 +47,141 @@
             </div>
 
         </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                </div>
+                <div class="col-3">
+                    <button type="button" class="light-green-button"><div class="light-btn-text">Cancel</div></button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="dark-green-button"><div class="dark-btn-txt">Get My ticket</div></button>
+
+                </div>
+            </div>
+
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn button button--light">Cancel</button>
-            <button type="button" class="btn button button--light">Get My ticket</button>
-        </div>
+
     </div>
 
-
 </div>
-<router-outlet></router-outlet>
 
 <style>
-    .input-layout{
-        /* Auto layout */
 
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0px;
+    .dark-btn-txt{
 
-        position: absolute;
-        width: 327px;
-        height: 240px;
-        left: 315px;
-        top: 191px;
-    }
+        position: static;
+        width: 123px;
+        height: 24px;
+        left: 38.5px;
+        top: 12px;
 
-    .main-text{
-        position: absolute;
-        width: 586px;
-        height: 105px;
-        left: 186px;
-        top: 42px;
-
-        /* Headline 4 */
+        /* Button/semibold/large */
 
         font-family: 'Lexend';
         font-style: normal;
         font-weight: 600;
-        font-size: 32px;
-        line-height: 48px;
-        /* or 150% */
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height, or 150% */
 
+        display: flex;
+        align-items: center;
         text-align: center;
-        letter-spacing: 0.25px;
+        letter-spacing: 1.25px;
 
-        /* base black */
+        /* white */
 
-        color: #424242;
+        color: #FFFFFF;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin: 0px 8px;
     }
 
-    .modal {
+    .light-btn-text{
+        position: static;
+        width: 61px;
+        height: 24px;
+        left: 69.5px;
+        top: 12px;
+
+        /* Button/semibold/large */
+
+        font-family: 'Lexend';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height, or 150% */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 1.25px;
+
+        /* Primary/500 */
+
+        color: #209F85;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin: 0px 8px;
+    }
+    .dark-green-button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 12px 20px;
+
+        /*position: absolute;*/
+        width: 200px;
+        height: 48px;
+        left: 727px;
+        top: 543px;
+
+        /* Primary/500 */
+
+        background: #209F85;
+        border: #209F85;
+        border-radius: 24px;
+    }
+
+    .light-green-button{
+        /* Auto layout */
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 12px 20px;
+
+        /*position: absolute;*/
+        width: 200px;
+        height: 48px;
+        left: 507px;
+        top: 543px;
+
+        /* white */
+
+        background: #FFFFFF;
+        /* Primary/500 */
+
+        border: 2px solid #209F85;
+        box-sizing: border-box;
+        border-radius: 24px;
+    }
+
+    .visible-modal {
         /*display:?/ none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
@@ -113,6 +196,7 @@
 
     /* Modal Content/Box */
     .modal-content {
+        align-items: center;
         background-color: #fefefe;
         margin: 15% auto; /* 15% from the top and centered */
         padding: 20px;
