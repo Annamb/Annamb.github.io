@@ -26,7 +26,8 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Give us a way to send you a ticket</p>
+        <div class="main-text"><p>Give us a way to send you a ticket</p></div>
+        <div class="input-layout">
         <form class="text-center">
             <div class="form-group">
                 <label class="form-label">
@@ -46,6 +47,7 @@
             </div>
 
         </form>
+        </div>
         <div class="modal-footer">
             <button type="button" class="btn button button--light">Cancel</button>
             <button type="button" class="btn button button--light">Get My ticket</button>
@@ -57,6 +59,45 @@
 <router-outlet></router-outlet>
 
 <style>
+    .input-layout{
+        /* Auto layout */
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+
+        position: absolute;
+        width: 327px;
+        height: 240px;
+        left: 315px;
+        top: 191px;
+    }
+
+    .main-text{
+        position: absolute;
+        width: 586px;
+        height: 105px;
+        left: 186px;
+        top: 42px;
+
+        /* Headline 4 */
+
+        font-family: 'Lexend';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 48px;
+        /* or 150% */
+
+        text-align: center;
+        letter-spacing: 0.25px;
+
+        /* base black */
+
+        color: #424242;
+    }
+
     .modal {
         /*display:?/ none; /* Hidden by default */
         position: fixed; /* Stay in place */
