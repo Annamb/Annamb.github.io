@@ -14,11 +14,7 @@
     </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <!-- <meta charset="utf-8">
-    <title>Evaluation</title>
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">-->
+
 </head>
 <body>
 <div id="myModal" class="visible-modal">
@@ -26,7 +22,7 @@
     <!-- Modal content -->
     <div class="modal-content">
 
-        <p>Give us a way to send you a ticket</p>
+        <h2>Give us a way to send you a ticket</h2>
         <form class="text-center">
             <div class="form-group">
                 <div>
@@ -55,7 +51,7 @@
                     <button href="https://docs.github.com/en/pages/getting-started-with-github-pages" type="button" class="light-green-button"><div class="light-btn-text">Cancel</div></button>
                 </div>
                 <div class="col-3">
-                    <button type="button" class="dark-green-button"><div class="dark-btn-txt">Get My ticket</div></button>
+                    <button id="ticketBtn" type="button" class="dark-green-button"><div class="dark-btn-txt">Get My ticket</div></button>
 
                 </div>
             </div>
@@ -78,7 +74,6 @@
 
         /* Button/semibold/large */
 
-        font-family: 'Lexend';
         font-style: normal;
         font-weight: 600;
         font-size: 16px;
@@ -112,7 +107,6 @@
 
         /* Button/semibold/large */
 
-        font-family: 'Lexend';
         font-style: normal;
         font-weight: 600;
         font-size: 16px;
@@ -222,3 +216,8 @@
 
 </body>
 </html>
+<script>
+    document.getElementById("ticketBtn").addEventListener("click", function () {
+        location.href = '/nextPage.html';
+    });
+</script>
