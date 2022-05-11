@@ -1,26 +1,14 @@
+<?php
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KCXS5FS');</script>
-    <!-- End Google Tag Manager -->
-
-    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MV8M3S3"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXJ4KZTJT5"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-G7LQD3LTH1');
-    </script>
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -62,10 +50,10 @@
                 <div class="col-6">
                 </div>
                 <div class="col-3">
-                    <button href="https://docs.github.com/en/pages/getting-started-with-github-pages" type="button" class="light-green-button"><div class="light-btn-text">Cancel</div></button>
+                    <button id="cancelBtn" type="button" ><div id="cancelText" >Cancel</div></button>
                 </div>
                 <div class="col-3">
-                    <button id="ticketBtn" type="button" class="dark-green-button"><div class="dark-btn-txt">Get My ticket</div></button>
+                    <button id="ticketBtn" type="button" ><div id="ticketText" >Get My ticket</div></button>
 
                 </div>
             </div>
@@ -78,7 +66,7 @@
 
 <style>
 
-    .dark-btn-txt{
+    .dark-green-text{
 
         position: static;
         width: 123px;
@@ -112,7 +100,7 @@
         margin: 0px 8px;
     }
 
-    .light-btn-text{
+    .light-green-text{
         position: static;
         width: 61px;
         height: 24px;
@@ -189,6 +177,119 @@
         border-radius: 24px;
     }
 
+    /*red*/
+
+    .dark-red-text{
+
+        position: static;
+        width: 123px;
+        height: 24px;
+        left: 38.5px;
+        top: 12px;
+
+        /* Button/semibold/large */
+
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height, or 150% */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 1.25px;
+
+        /* white */
+
+        color: #FFFFFF;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin: 0px 8px;
+    }
+
+    .light-red-text{
+        position: static;
+        width: 61px;
+        height: 24px;
+        left: 69.5px;
+        top: 12px;
+
+        /* Button/semibold/large */
+
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height, or 150% */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 1.25px;
+
+        /* Primary/500 */
+
+        color: #8B0000;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin: 0px 8px;
+    }
+    .dark-red-button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 12px 20px;
+
+        /*position: absolute;*/
+        width: 200px;
+        height: 48px;
+        left: 727px;
+        top: 543px;
+
+        /* Primary/500 */
+
+        background: #8B0000;
+        border: #8B0000;
+        border-radius: 24px;
+    }
+
+    .light-red-button{
+        /* Auto layout */
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 12px 20px;
+
+        /*position: absolute;*/
+        width: 200px;
+        height: 48px;
+        left: 507px;
+        top: 543px;
+
+        /* white */
+
+        background: #FFFFFF;
+        /* Primary/500 */
+
+        border: 2px solid #8B0000;
+        box-sizing: border-box;
+        border-radius: 24px;
+    }
+
     .visible-modal {
         /*display:?/ none; /* Hidden by default */
         position: fixed; /* Stay in place */
@@ -231,8 +332,55 @@
 </body>
 </html>
 <script>
-    document.getElementById("ticketBtn").addEventListener("click", function () {
-        gtag("view_item");
-        location.href = '/nextPage.html';
-    });
+    function main() {
+        var color = chooseColor();
+
+        document.getElementById("ticketBtn").addEventListener("click", function () {
+            console.log("Sending request!")
+            $.ajax({
+                method: "POST",
+                url: "postData.php",
+                dataType: 'json',
+                data: {click: '1', color: color}
+            })
+                .done(function (response) {
+                    $("p.broken").html(response);
+                });
+
+        });
+        document.getElementById("cancelBtn").addEventListener("click", function () {
+
+            $.ajax({
+                method: "POST",
+                url: "postData.php",
+                dataType: 'json',
+                data: {click: '0', color: color}
+            })
+                .done(function (response) {
+                    $("p.broken").html(response);
+                });
+        });
+    }
+    window.onload = main;
+
+    function chooseColor(){
+       var i = getRndInteger(0,100);
+       if(i >= 50){
+           document.getElementById("ticketBtn").classList.add("dark-red-button");
+           document.getElementById("ticketText").classList.add("dark-red-text");
+           document.getElementById("cancelBtn").classList.add("light-red-button");
+           document.getElementById("cancelText").classList.add("light-red-text");
+           return "red";
+       }else{
+           document.getElementById("ticketBtn").classList.add("dark-green-button");
+           document.getElementById("ticketText").classList.add("dark-green-text");
+           document.getElementById("cancelBtn").classList.add("light-green-button");
+           document.getElementById("cancelText").classList.add("light-green-text");
+           return "green";
+       }
+    }
+
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
+    }
 </script>
